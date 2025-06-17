@@ -267,7 +267,7 @@ def copy_attachment_notes(md_files, output_dir):
     
     return copied_count, skipped_count, attachments_copied, archives_extracted
 
-def creat_output_dir(directory):
+def create_output_dir(directory):
     """Создает выходную директорию, если она не существует"""
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -362,7 +362,7 @@ def download_yandex_disk_contents():
 def main():
     """Основная функция скрипта."""
     print("Проверка выходной директории...")
-    creat_output_dir(OUTPUT_PATH)
+    create_output_dir(OUTPUT_PATH)
     
     print("\nПоиск .md файлов...")
     md_files = find_md_files(OBSIDIAN_PATH)
