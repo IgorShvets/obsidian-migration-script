@@ -267,11 +267,10 @@ def copy_attachment_notes(md_files, output_dir):
     
     return copied_count, skipped_count, attachments_copied, archives_extracted
 
-def clean_output_dir(directory):
-    """Очищает выходную директорию перед запуском скрипта"""
-    if os.path.exists(directory):
-        shutil.rmtree(directory)
-    os.makedirs(directory)
+def creat_output_dir(directory):
+    """Создает выходную директорию, если она не существует"""
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
 def get_yandex_disk_folder_path(url: str) -> str | None:
     """Извлекает путь к папке из ссылки Яндекс.Диска."""
@@ -362,8 +361,8 @@ def download_yandex_disk_contents():
 
 def main():
     """Основная функция скрипта."""
-    print("Очистка выходной директории...")
-    clean_output_dir(OUTPUT_PATH)
+    print("Проверка выходной директории...")
+    creat_output_dir(OUTPUT_PATH)
     
     print("\nПоиск .md файлов...")
     md_files = find_md_files(OBSIDIAN_PATH)
